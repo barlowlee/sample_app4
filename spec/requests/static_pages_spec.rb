@@ -4,8 +4,9 @@ describe "Static pages" do
   
   describe "Home page" do
     it "should have the h1 'Sample App'" do
-      visit '/static_pages/home'
+      visit '/static_pages/home'  # You visit a page as described in a route.
       page.should have_selector('h1', :text => 'Sample App')
+                                  # And you describe something you should find on that page.
     end
     it "should have the base title" do
       visit '/static_pages/home'
