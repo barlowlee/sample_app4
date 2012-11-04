@@ -15,9 +15,10 @@ guard 'spork', :rspec_env => { 'RAILS_ENV' => 'test' } do
   watch('spec/support/')
 end
 
-guard 'rspec', :version => 2, :all_after_pass => false, :cli => '--drb' do   # :all_after_pass => false,  
-            # this ':all_after_pass line is supposed to make rspec more efficient, but it seems to make growl work intermittently
-            # so I commented it out.
+guard 'rspec', :version => 2, :all_after_pass => false, :cli => '--drb' do  
+            # the ':all_after_pass' line is prevents rspec from sending multiple notifications
+            # but I can't get growl to display every time
+            # but the rspec display in the terminal window works properly every time.
   watch(%r{^spec/.+_spec\.rb$})
   watch(%r{^lib/(.+)\.rb$})     { |m| "spec/lib/#{m[1]}_spec.rb" }
   watch('spec/spec_helper.rb')  { "spec" }
